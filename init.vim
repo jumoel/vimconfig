@@ -10,6 +10,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " use true colors
@@ -29,6 +30,9 @@ set tabstop=4
 
 " don't display netrw top banner 
 let g:netrw_banner=0
+
+" always show git gutter
+let g:gitgutter_sign_column_always = 1
 
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
