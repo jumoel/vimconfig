@@ -11,6 +11,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-vinegar'
 call plug#end()
 
 " use true colors
