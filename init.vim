@@ -18,12 +18,6 @@ call plug#end()
 " use true colors
 set termguicolors
 
-" syntax based on filenames
-filetype on
-
-" enable syntax highlighting
-syntax on
-
 " show line numbers
 set number
 
