@@ -9,6 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'mhartington/oceanic-next' 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " use true colors
@@ -22,6 +23,9 @@ syntax on
 
 " set a theme
 colorscheme OceanicNext
+
+" use smaller tabsizes
+set tabstop=4
 
 " don't display netrw top banner 
 let g:netrw_banner=0
