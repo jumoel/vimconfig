@@ -22,6 +22,9 @@ filetype on
 " enable syntax highlighting
 syntax on
 
+" show line numbers
+set number
+
 " set a theme
 colorscheme OceanicNext
 
