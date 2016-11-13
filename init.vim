@@ -41,7 +41,7 @@ set number
 " set a theme
 set background=dark
 colorscheme OceanicNext
-let g:airline_theme='OceanicNext'
+let g:airline_theme='oceanicnext'
 
 " use smaller tabsizes
 set tabstop=4
