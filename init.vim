@@ -26,6 +26,9 @@ set backupcopy=yes
 set hlsearch
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
+" show matching parenthesis
+set showmatch
+
 " use true colors
 set termguicolors
 
