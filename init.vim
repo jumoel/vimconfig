@@ -21,6 +21,11 @@ call plug#end()
 " because it can break hot reloading and file watching
 set backupcopy=yes
 
+" use visual highlight of search results and escape from
+" them with <Esc>
+set hlsearch
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
 " use true colors
 set termguicolors
 
