@@ -16,6 +16,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
 
+" vim shouldn't rename original files when writing new ones
+" because it can break hot reloading and file watching
+set backupcopy=yes
+
 " use true colors
 set termguicolors
 
