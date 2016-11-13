@@ -14,6 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " vim shouldn't rename original files when writing new ones
@@ -29,6 +30,7 @@ set number
 " set a theme
 set background=dark
 colorscheme OceanicNext
+let g:airline_theme='OceanicNext'
 
 " use smaller tabsizes
 set tabstop=4
