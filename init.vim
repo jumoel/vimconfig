@@ -13,6 +13,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " use true colors
@@ -46,3 +47,6 @@ let g:javascript_conceal_return         = "⇚"
 let g:javascript_conceal_undefined      = "¿"
 let g:javascript_conceal_NaN            = "ℕ"
 let g:javascript_conceal_arrow_function = "⇒"
+
+" use eslint for js files
+let g:syntastic_javascript_checkers = ['eslint']
