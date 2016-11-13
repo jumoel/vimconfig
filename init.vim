@@ -29,6 +29,9 @@ nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 " show matching parenthesis
 set showmatch
 
+" Don't show gitignored files in explorer
+let g:netrw_list_hide = netrw_gitignore#Hide()
+
 " use true colors
 set termguicolors
 
