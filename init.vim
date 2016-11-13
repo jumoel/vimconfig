@@ -27,6 +27,7 @@ set termguicolors
 set number
 
 " set a theme
+set background=dark
 colorscheme OceanicNext
 
 " use smaller tabsizes
