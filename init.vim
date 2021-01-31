@@ -2,21 +2,48 @@
 
 " Install the plugins
 call plug#begin('~/.config/nvim/plugged')
+  " Fuzzy finder
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'pbrisbin/vim-colors-off'
+
+	" LSP & completion
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-lua/completion-nvim'
+
+	" Writing mode
+	Plug 'junegunn/goyo.vim'
+
+	" Color
+	Plug 'fenetikm/falcon'
+
+	" Syntaxes
+	Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
-lua require'nvim_lsp'.rust_analyzer.setup{}
+lua << EOF
+local nvim_lsp = require('lspconfig')
+ 
+-- enabled lsp servers
+local servers = { "rust_analyzer", "tsserver" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup { on_attach = on_attach }
+end
+EOF
 
 " open the fuzzy finder with Cmd-P
-nnoremap <silent> <leader>p :GFiles<CR>
+nnoremap <silent> <leader>p :FilesPreview<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+command! -bang -nargs=? -complete=dir FilesPreview
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " set a theme
 set background=dark
-colorscheme off
+colorscheme falcon
+
 syntax on
+
+" ensure the gutter is always shown
+set signcolumn=yes
 
 " vim shouldn't rename original files when writing new ones
 " because it can break hot reloading and file watching
@@ -50,19 +77,12 @@ let g:netrw_list_hide=
 " Show whitespace
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-" make the listchars barely visible (when using oceanic-next)
-highlight SpecialKey guifg=#263d4a
+" make the listchars barely visible
+highlight NonText guifg=#444444
 
-function! <SID>StripTrailingWhitespaces()
-		" Preparation: save last search, and cursor position.
-		let _s=@/
-		let l = line(".")
-		let c = col(".")
-		" Do the business:
-		%s/\s\+$//e
-		" Clean up: restore previous search history, and cursor position
-		let @/=_s
-		call cursor(l, c)
-endfunction
+" enable mouse
+set mouse=a
 
-autocmd BufWritePre *.js :call <SID>StripTrailingWhitespaces()
+autocmd BufEnter * lua require'completion'.on_attach()
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+
